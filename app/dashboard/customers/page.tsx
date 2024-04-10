@@ -1,14 +1,31 @@
 'use client';
 import { useEffect, useState } from 'react';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 
 export default function Page() {
   const [data, setData] = useState([]);
   const [languageId, setLanguageId] = useState('1');
   const [startDate, setstartDate] = useState('01-04-2024');
   const [endDate, setendDate] = useState('10-04-2024');
+
   const fetchData = async () => {
     try {
-      const response = await fetch(
+      const response = await axios.post(
+        'https://archive.pib.gov.in/apipib/api/Getsearch',
+        {
+          langid: 1,
+          startDate: '01-04-2024',
+          endDate: '10-04-2024',
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'Bearer 15dpV1NVTyHXVmZeo3uFSaA13570Qu9mpUj5N6SxAGTiGBE78Lw9XKfyNSwh1JFeYdeZh-ywsQsfmxK7FIynzp5bL13ug8rP4GydsOQgs-a-iMrYNuCYQkpoVof_FP2QFypnflJX9avcbS-AWegigLhXVwDErejKN6tctWjsD2omBF9JzocUMT5biA3YutTUdcflW9wYWYfBzlOV5erA1Lks6YlovOYkGRdQJzHHlpB5mGoXXE6Mr2fTW-93AOmeKsfEUWL29ziY7Yy30h37oCL-UAtMNOgr5NOGQ2A28mM',
+          },
+        },
+      );
+      /* const response = await Axios.post(
         'https://archive.pib.gov.in/apipib/api/Getsearch',
         {
           method: 'POST',
@@ -24,13 +41,13 @@ export default function Page() {
             endDate: '10-04-2024',
           }),
         },
-      );
+      ); */
 
-      console.log(response);
-      if (response.ok) {
-        const responseData = await response.json();
+      if (response.status === 200) {
+        console.log(response);
+        /*         const responseData = await response.json();
         setData(responseData); // Set fetched data to state
-        console.log(data);
+        console.log(data); */
       } else {
         console.error('Request failed');
       }
