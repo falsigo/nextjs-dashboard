@@ -12,6 +12,7 @@ export default function Page() {
         'https://archive.pib.gov.in/apipib/api/Getsearch',
         {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
             Authorization:
