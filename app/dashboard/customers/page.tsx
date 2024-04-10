@@ -36,8 +36,8 @@ export default function Page() {
     // Example data to be sent in the request
     const requestData: RequestData = {
       langid: 1,
-      startDate: '2021-01-01',
-      endDate: '2021-12-31',
+      startDate: '01-04-2024',
+      endDate: '10-04-2024',
     };
 
     // Making the POST request
@@ -75,8 +75,8 @@ export default function Page() {
         'https://archive.pib.gov.in/apipib/api/Getsearch',
         {
           langid: 1,
-          startDate: '01-04-2024',
-          endDate: '10-04-2024',
+          startDate:  '01-04-2024',
+          endDate:    '10-04-2024',
         },
         {
           headers: {
